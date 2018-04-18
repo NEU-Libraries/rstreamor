@@ -8,7 +8,7 @@ module Rstreamor
     end
 
     def ranges
-      if request.headers['HTTP_RANGE'] && if request.headers['HTTP_RANGE'].kind_of? String
+      if request.headers['HTTP_RANGE'] && (request.headers['HTTP_RANGE'].kind_of? String)
         request.headers['HTTP_RANGE'].gsub('bytes=', '').split('-')
       end
     end
