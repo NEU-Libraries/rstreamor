@@ -8,7 +8,9 @@ module Rstreamor
     end
 
     def ranges
-      request.headers['HTTP_RANGE'].gsub('bytes=', '').split('-') if request.headers['HTTP_RANGE']
+      if request.headers['HTTP_RANGE'] && if request.headers['HTTP_RANGE'].kind_of? String
+        request.headers['HTTP_RANGE'].gsub('bytes=', '').split('-')
+      end
     end
 
     def upper_bound
